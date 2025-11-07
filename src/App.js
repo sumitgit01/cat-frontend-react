@@ -5,7 +5,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://catservice.seh.buzz/api/cats/getcats")
+    fetch("https://catservice.seh.buzz/api/cats/getcats/")
       .then((response) => response.json())
       .then((data) => {
         setCats(data);
@@ -18,21 +18,33 @@ function App() {
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f7f7f7", padding: "20px" }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #ffecd2, #fcb69f)",
+        padding: "30px",
+      }}
+    >
       <h1
-        style={{ textAlign: "center", fontSize: "28px", marginBottom: "20px" }}
+        style={{
+          textAlign: "center",
+          fontSize: "40px",
+          fontWeight: "bold",
+          marginBottom: "30px",
+          color: "#3A3A3A",
+        }}
       >
-        ��� Cat List
+        🐱 Cat Adoption Center
       </h1>
 
       {loading ? (
-        <p style={{ textAlign: "center" }}>Loading cats...</p>
+        <p style={{ textAlign: "center", fontSize: "20px" }}>Loading cats...</p>
       ) : (
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "20px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "25px",
           }}
         >
           {cats.map((cat) => (
@@ -41,19 +53,39 @@ function App() {
               style={{
                 background: "white",
                 padding: "20px",
-                borderRadius: "10px",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                borderRadius: "15px",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                textAlign: "center",
+                transition: "0.3s",
               }}
             >
-              <h2 style={{ marginBottom: "10px" }}>{cat.name}</h2>
-              <p>Breed: {cat.breed}</p>
-              <p>Age: {cat.age}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
+              <img
+                src={cat.imageUrl}
+                alt={cat.name}
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "10px",
+                  marginBottom: "15px",
+                }}
+              />
+              <h2 style={{ fontSize: "24px", marginBottom: "5px" }}>
+                {cat.name}
+              </h2>
+              <p style={{ margin: "5px 0" }}>🐾 Breed: {cat.breed}</p>
+              <p style={{ margin: "5px 0" }}>🎂 Age: {cat.age} years</p>
+              <p style={{ margin: "10px 0", fontWeight: "bold" }}>
+                {cat.available ? "✅ Available" : "❌ Not Available"}
+              </p>
 
-export default App;
+              {cat.videoUrl && (
+                <a
+                  href={cat.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block",
+                    marginBottom: "15px",
+                    color: "#007bff",
+                    textDecoration: "underline",
