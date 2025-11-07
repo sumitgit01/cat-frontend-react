@@ -89,3 +89,32 @@ function App() {
                     marginBottom: "15px",
                     color: "#007bff",
                     textDecoration: "underline",
+                  }}
+                >
+                  🎥 Watch Video
+                </a>
+              )}
+
+              <button
+                style={{
+                  background: cat.available ? "#28a745" : "#999",
+                  border: "none",
+                  color: "white",
+                  padding: "10px 18px",
+                  borderRadius: "8px",
+                  cursor: cat.available ? "pointer" : "not-allowed",
+                  fontSize: "16px",
+                }}
+                disabled={!cat.available}
+              >
+                Adopt Me 🐈
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
