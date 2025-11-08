@@ -5,7 +5,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://catservice.seh.buzz/api/cats/getcats")
+    fetch("http://192.168.68.116:8123/api/cats/getcats")
       .then((response) => response.json())
       .then((data) => {
         setCats(data);
