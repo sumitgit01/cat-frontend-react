@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cat-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cat-frontend
+  template:
+    metadata:
+      labels:
+        app: cat-frontend
+    spec:
+      containers:
+        - name: cat-frontend
+          image: trialmse12e.jfrog.io/docker-trial/cat-frontend:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: cat-frontend-config
