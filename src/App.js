@@ -5,7 +5,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://192.168.68.108:8123/api/cats/getcats")
+    fetch("http://192.168.68.126:8123/api/cats/getcats")
       .then((response) => response.json())
       .then((data) => {
         setCats(data);
