@@ -1,7 +1,7 @@
 @Library(['cat-sharedlibrary@main'])_
 build(
     appType: 'node',
-    appDir: '.',
+    //appDir: '.',
     sonarProjectKey: 'cat-frontend',
     sonarSources: 'src'
 )
