@@ -1,7 +1,7 @@
 app_name=$(jq -r '.name' package.json)
 echo $app_name
 version=$(jq -r '.version' package.json)
-NEXUS_URL="192.168.68.124:8070"
+NEXUS_URL="http://192.168.68.124:8070"
 echo $nexusUrl
 docker build -t $app_name:$version .
 
