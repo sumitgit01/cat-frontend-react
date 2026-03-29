@@ -1,18 +1,21 @@
+#!/bin/bash
+
 app_name=$(jq -r '.name' package.json)
-echo $app_name
 version=$(jq -r '.version' package.json)
-NEXUS_URL="http://192.168.68.124:8070"
-echo $nexusUrl
+
+echo "App: $app_name"
+echo "Version: $version"
+
+# ✅ Correct (NO http://)
+NEXUS_URL="192.168.68.124:8070"
+REPO_NAME="cat-frontend-react"
+
+# Build image
 docker build -t $app_name:$version .
 
-#docker tag $app_name:$version $account_id.dkr.ecr.ap-southeast-1.amazonaws.com/$cluster_name:$version
-#Finally we push our image to ECR
-#docker push $account_id.dkr.ecr.ap-southeast-1.amazonaws.com/$cluster_name:$version
-#docker tag $app_name:$version $nexusUrl:$version
-#Finally we push our image to ECR
-#docker push $nexusUrl:$version 
-
-docker tag $app_name:$version $NEXUS_URL/$app_name:$version
+# Tag image
+docker tag $app_name:$version \
+$NEXUS_URL/$REPO_NAME/$app_name:$version
 
 # Push image
-docker push $NEXUS_URL/$app_name:$version
+docker push $NEXUS_URL/$REPO_NAME/$app_name:$version
