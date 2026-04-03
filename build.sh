@@ -3,13 +3,16 @@
 # Exit on any error
 set -e
 
+NEXUS_URL=$1
+REPO_NAME=$2
+
 # Extract metadata from package.json
 app_name=$(jq -r '.name' package.json)
 version=$(jq -r '.version' package.json)
 
 echo "--- Building: $app_name version $version ---"
+echo "--- Repo: $REPO_NAME ---"
 
-NEXUS_URL="192.168.68.124:8082"
 
 # 1. Build the local image
 docker build -t "$app_name:$version" .
