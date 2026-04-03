@@ -3,5 +3,7 @@ build(
     appType: 'node',
     //appDir: '.',
     sonarProjectKey: 'cat-frontend',
-    sonarSources: 'src'
+    sonarSources: 'src',
+    nexusPort: '8082',
+    repoName: 'cat-frontend-react'
 )
