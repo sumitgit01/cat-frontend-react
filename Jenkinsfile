@@ -6,6 +6,6 @@ build(
     sonarSources: 'src',
     nexusPort: '8082',
     repoName: 'cat-frontend-react',
-    helmRepoName: 'cat-helm/cat-frontend-react',
+    helmRepoName: 'cat-helm',
     helmPort: '8081'
 )
